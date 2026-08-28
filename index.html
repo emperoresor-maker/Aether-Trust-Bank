@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aether Trust Bank</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background: #f0f4f8;
+      color: #1a2332;
+      line-height: 1.5;
+    }
+
+    /* Header */
+    .header {
+      background: #0b2c4d;
+      color: white;
+      padding: 18px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    }
+
+    .logo {
+      font-size: 22px;
+      font-weight: 600;
+      letter-spacing: -0.3px;
+    }
+
+    .logo span {
+      color: #4db8ff;
+    }
+
+    /* Login */
+    .login-container {
+      max-width: 420px;
+      margin: 80px auto;
+      background: white;
+      padding: 40px 36px;
+      border-radius: 16px;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+    }
+
+    .login-container h2 {
+      text-align: center;
+      margin-bottom: 28px;
+      font-size: 24px;
+      color: #0b2c4d;
+    }
+
+    label {
+      display: block;
+      font-size: 14px;
+      font-weight: 500;
+      margin-bottom: 6px;
+      color: #3a4a5c;
+    }
+
+    input {
+      width: 100%;
+      padding: 14px 16px;
+      margin-bottom: 20px;
+      border: 1px solid #d1d9e6;
+      border-radius: 10px;
+      font-size: 15px;
+      transition: border-color 0.2s;
+    }
+
+    input:focus {
+      outline: none;
+      border-color: #0b2c4d;
+      box-shadow: 0 0 0 3px rgba(11, 44, 77, 0.12);
+    }
+
+    button {
+      width: 100%;
+      padding: 14px;
+      border: none;
+      border-radius: 10px;
+      background: #0b2c4d;
+      color: white;
+      font-size: 16px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    button:hover {
+      background: #08304f;
+    }
+
+    /* Dashboard */
+    .dashboard {
+      display: none;
+      max-width: 960px;
+      margin: 40px auto;
+      padding: 0 20px 60px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 16px;
+      padding: 28px 32px;
+      margin-bottom: 24px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+    }
+
+    .welcome {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .welcome h2 {
+      font-size: 22px;
+      color: #0b2c4d;
+    }
+
+    .account-number {
+      font-size: 14px;
+      color: #6b7c93;
+    }
+
+    .balance-label {
+      font-size: 14px;
+      color: #6b7c93;
+      margin-top: 20px;
+    }
+
+    .balance {
+      font-size: 42px;
+      font-weight: 700;
+      color: #0b2c4d;
+      margin-top: 4px;
+      letter-spacing: -1px;
+    }
+
+    .transactions h3 {
+      font-size: 18px;
+      margin-bottom: 20px;
+      color: #0b2c4d;
+    }
+
+    .transaction {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px 0;
+      border-bottom: 1px solid #eef2f7;
+    }
+
+    .transaction:last-child {
+      border-bottom: none;
+    }
+
+    .tx-info strong {
+      display: block;
+      font-size: 15px;
+    }
+
+    .tx-info span {
+      font-size: 13px;
+      color: #6b7c93;
+    }
+
+    .tx-amount {
+      font-weight: 600;
+      font-size: 15px;
+    }
+
+    .tx-amount.positive {
+      color: #0d8a4e;
+    }
+
+    .tx-amount.negative {
+      color: #c0392b;
+    }
+
+    .logout-btn {
+      background: #4a5568;
+      max-width: 180px;
+      margin-top: 10px;
+    }
+
+    .logout-btn:hover {
+      background: #2d3748;
+    }
+
+    /* Responsive */
+    @media (max-width: 500px) {
+      .login-container {
+        margin: 40px 16px;
+        padding: 32px 24px;
+      }
+
+      .balance {
+        font-size: 34px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="header">
+    <div class="logo">Aether <span>Trust</span> Bank</div>
+  </header>
+
+  <!-- Login Page -->
+  <div class="login-container" id="loginPage">
+    <h2>Sign in to your account</h2>
+
+    <label for="username">Username</label>
+    <input type="text" id="username" placeholder="Enter your username" autocomplete="username">
+
+    <label for="password">Password</label>
+    <input type="password" id="password" placeholder="Enter your password" autocomplete="current-password">
+
+    <button onclick="login()">Sign In</button>
+  </div>
+
+  <!-- Dashboard -->
+  <div class="dashboard" id="dashboard">
+
+    <div class="card">
+      <div class="welcome">
+        <div>
+          <h2>Welcome back</h2>
+          <div class="account-number">Account •••• 4829</div>
+        </div>
+      </div>
+
+      <div class="balance-label">Available Balance</div>
+      <div class="balance" id="balance">$12,847.53</div>
+    </div>
+
+    <div class="card transactions">
+      <h3>Recent Transactions</h3>
+
+      <div class="transaction">
+        <div class="tx-info">
+          <strong>Direct Deposit – Payroll</strong>
+          <span>Aug 25, 2026</span>
+        </div>
+        <div class="tx-amount positive">+$3,250.00</div>
+      </div>
+
+      <div class="transaction">
+        <div class="tx-info">
+          <strong>Online Transfer to Savings</strong>
+          <span>Aug 22, 2026</span>
+        </div>
+        <div class="tx-amount negative">-$1,200.00</div>
+      </div>
+
+      <div class="transaction">
+        <div class="tx-info">
+          <strong>Grocery Store Purchase</strong>
+          <span>Aug 20, 2026</span>
+        </div>
+        <div class="tx-amount negative">-$87.42</div>
+      </div>
+
+      <div class="transaction">
+        <div class="tx-info">
+          <strong>Interest Credit</strong>
+          <span>Aug 15, 2026</span>
+        </div>
+        <div class="tx-amount positive">+$12.18</div>
+      </div>
+    </div>
+
+    <button class="logout-btn" onclick="logout()">Log Out</button>
+  </div>
+
+  <script>
+    function login() {
+      const username = document.getElementById("username").value.trim();
+      const password = document.getElementById("password").value;
+
+      if (!username || !password) {
+        alert("Please enter both username and password.");
+        return;
+      }
+
+      document.getElementById("loginPage").style.display = "none";
+      document.getElementById("dashboard").style.display = "block";
+    }
+
+    function logout() {
+      document.getElementById("dashboard").style.display = "none";
+      document.getElementById("loginPage").style.display = "block";
+      document.getElementById("username").value = "";
+      document.getElementById("password").value = "";
+    }
+  </script>
+
+</body>
+</html>
